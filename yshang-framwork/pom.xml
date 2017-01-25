@@ -478,5 +478,6 @@
 	<modules>
 		<module>yshang-framwork-core</module>
 		<module>yshang-framwork-web</module>
+		<module>yshang-framwork-generate</module>
 	</modules>
 </project>
