@@ -1,0 +1,89 @@
+简介： 
+Redis本质上是一个Key-Value类型的内存数据库，很像memcached，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。因为是纯内存操作，Redis的性能非常出色，Redis最大的魅力是支持保存List链表和Set集合的数据结构，而且还支持对List进行各种操作，例如从List两端push和pop数据，取 List区间，排序等等，对Set支持各种集合的并集交集操作，此外单个value的最大限制是1GB，不像memcached只能保存1MB的数据，Redis可以用来实现很多有用的功能，比方说用他的List来做FIFO双向链表，实现一个轻量级的高性能消息队列服务，用他的Set可以做高性能的tag系统等等。另外Redis也可以对存入的Key-Value设置expire时间，因此也可以被当作一个功能加强版的memcached来用。 
+
+Windows版的Redis可到此处下载，非官方版 
+http://code.google.com/p/servicestack/wiki/RedisWindowsDownload 
+
+Redis文件夹有以下几个文件 
+redis-server.exe：服务程序 
+指定redis的配置文件，如没有指定，则使用默认设置 
+D:\redis-2.0.0-rc2>redis-server.exe redis.conf 
+
+redis.conf配置选项如下 
+daemonize 是否以后台进程运行，默认为no 
+pidfile 如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid 
+bind 绑定主机IP，默认值为127.0.0.1（注释） 
+port 监听端口，默认为6379 
+timeout 超时时间，默认为300（秒） 
+loglevel 日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning 
+logfile 日志记录方式，默认值为stdout 
+databases 可用数据库数，默认值为16，默认数据库为0 
+save <seconds> <changes> 指出在多长时间内，有多少次更新操作，就将数据同步到数据文件。这个可以多个条件配合，比如默认配置文件中的设置，就设置了三个条件。 
+save 900 1  900秒（15分钟）内至少有1个key被改变 
+save 300 10  300秒（5分钟）内至少有300个key被改变 
+save 60 10000  60秒内至少有10000个key被改变 
+rdbcompression 存储至本地数据库时是否压缩数据，默认为yes 
+dbfilename 本地数据库文件名，默认值为dump.rdb 
+dir 本地数据库存放路径，默认值为 ./ 
+slaveof <masterip> <masterport> 当本机为从服务时，设置主服务的IP及端口（注释） 
+masterauth <master-password> 当本机为从服务时，设置主服务的连接密码（注释） 
+requirepass 连接密码（注释） 
+maxclients 最大客户端连接数，默认不限制（注释） 
+maxmemory <bytes> 设置最大内存，达到最大内存设置后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理后，任到达最大内存设置，将无法再进行写入操作。（注释） 
+appendonly 是否在每次更新操作后进行日志记录，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认值为no 
+appendfilename 更新日志文件名，默认值为appendonly.aof（注释） 
+appendfsync 更新日志条件，共有3个可选值。no表示等操作系统进行数据缓存同步到磁盘，always表示每次更新操作后手动调用fsync()将数据写到磁盘，everysec表示每秒同步一次（默认值）。 
+vm-enabled 是否使用虚拟内存，默认值为no 
+vm-swap-file 虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享 
+vm-max-memory 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的(Redis的索引数据就是keys),也就是说,当vm-max-memory设置为0的时候,其实是所有value都存在于磁盘。默认值为0。 
+
+Redis官方文档对VM的使用提出了一些建议: 
+当你的key很小而value很大时,使用VM的效果会比较好.因为这样节约的内存比较大. 
+当你的key不小时,可以考虑使用一些非常方法将很大的key变成很大的value,比如你可以考虑将key,value组合成一个新的value. 
+最好使用linux ext3 等对稀疏文件支持比较好的文件系统保存你的swap文件. 
+vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好不要超过机器的核数.如果设置为0,那么所有对swap文件的操作都是串行的.可能会造成比较长时间的延迟,但是对数据完整性有很好的保证.redis-cli.exe：命令行客户端，测试用 
+D:\redis-2.0.0-rc2>redis-cli.exe -h 127.0.0.1 -p 6379 
+
+设置一个Key并获取返回的值: 
+$ ./redis-cli set mykey somevalue 
+OK 
+$ ./redis-cli get mykey 
+Somevalue 
+
+如何添加值到list: 
+$ ./redis-cli lpush mylist firstvalue 
+OK 
+$ ./redis-cli lpush mylist secondvalue 
+OK 
+$ ./redis-cli lpush mylist thirdvalue 
+OK 
+$ ./redis-cli lrange mylist 0 -1 
+1. thirdvalue 
+2. secondvalue 
+3. firstvalue 
+$ ./redis-cli rpop mylist 
+firstvalue 
+$ ./redis-cli lrange mylist 0 -1 
+1. thirdvalue 
+2. secondvalue 
+
+redis-check-dump.exe：本地数据库检查 
+
+redis-check-aof.exe：更新日志检查 
+
+redis-benchmark.exe：性能测试，用以模拟同时由N个客户端发送M个 SETs/GETs 查询 (类似于 Apache 的 ab 工具). 
+./redis-benchmark -n 100000 –c 50 
+====== SET ====== 
+100007 requests completed in 0.88 seconds （译者注：100004 查询完成于 1.14 秒 ） 
+50 parallel clients （译者注：50个并发客户端） 
+3 bytes payload （译者注：3字节有效载荷) 
+keep alive: 1 （译者注：保持1个连接) 
+58.50% <= 0 milliseconds（译者注：毫秒） 
+99.17% <= 1 milliseconds 
+99.58% <= 2 milliseconds 
+99.85% <= 3 milliseconds 
+99.90% <= 6 milliseconds 
+100.00% <= 9 milliseconds 
+114293.71 requests per second（译者注：每秒 114293.71 次查询） 
+
+Windows下测试并发客户端极限为60 
