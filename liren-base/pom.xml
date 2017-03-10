@@ -19,5 +19,6 @@
   </properties>
   <modules>
     <module>liren-thread</module>
+    <module>liren-io</module>
   </modules>
 </project>
