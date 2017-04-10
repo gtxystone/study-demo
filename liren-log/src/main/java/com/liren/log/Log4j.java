@@ -11,6 +11,8 @@ public class Log4j {
 	
 	public static void main(String[] args) {
 		logger.debug("org.aien.test----package");
+		
+		System.out.println(Log4j.class.getName());
 	}
 
 }

@@ -11,8 +11,8 @@ public class ConsumerClient {
 
 	public static void main(String[] args) {
 		Properties props = new Properties();
-//		props.put("bootstrap.servers", "localhost:9092");
-		props.put("bootstrap.servers", "192.168.153.136:9092,192.168.153.137:9092,192.168.153.138:9092");
+		props.put("bootstrap.servers", "192.168.153.139:9092");
+//		props.put("bootstrap.servers", "192.168.153.136:9092,192.168.153.137:9092,192.168.153.138:9092");
 //		props.put("group.id", "test");
 		props.put("group.id", "console-consumer-62593");
 		props.put("enable.auto.commit", "true"); // 自动commit

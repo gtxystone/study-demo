@@ -21,8 +21,9 @@ public class CloudConnectionUtils {
 		for (String content : docs) {
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.addField("id", i++);
-			doc.addField("content_test", content);					
+//			doc.addField("content_test", content);					
 			sids.add(doc);
+			
 		}
 		try {
 			solrClient.add("abcd", sids);

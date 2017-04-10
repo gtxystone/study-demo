@@ -14,8 +14,8 @@ public class ProducerClient {
 
 	public static void main(String[] args) {
 		Properties props = new Properties();
-//		props.put("bootstrap.servers", "localhost:9092");
-		props.put("bootstrap.servers", "192.168.153.136:9092,192.168.153.137:9092,192.168.153.138:9092");
+		props.put("bootstrap.servers", "192.168.153.139:9092");
+//		props.put("bootstrap.servers", "192.168.153.136:9092,192.168.153.137:9092,192.168.153.138:9092");
 		props.put("acks", "all"); // ack方式，all，会等所有的commit最慢的方式
 		props.put("retries", 0); // 失败是否重试，设置会有可能产生重复数据
 		props.put("batch.size", 16384); // 对于每个partition的batch buffer大小
