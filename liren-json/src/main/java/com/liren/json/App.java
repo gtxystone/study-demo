@@ -1,4 +1,4 @@
-package com.liren.mybatis;
+package com.liren.json;
 
 /**
  * Hello world!
