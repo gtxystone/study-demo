@@ -23,5 +23,6 @@
     <module>ioc</module>
     <module>aop</module>
     <module>event</module>
+    <module>data</module>
   </modules>
 </project>
