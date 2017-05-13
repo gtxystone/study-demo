@@ -20,5 +20,6 @@
   <modules>
     <module>liren-thread</module>
     <module>liren-io</module>
+    <module>liren-collection</module>
   </modules>
 </project>

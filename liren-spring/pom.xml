@@ -19,5 +19,9 @@
   </properties>
   <modules>
     <module>cache</module>
+    <module>liren-ioc</module>
+    <module>ioc</module>
+    <module>aop</module>
+    <module>event</module>
   </modules>
 </project>

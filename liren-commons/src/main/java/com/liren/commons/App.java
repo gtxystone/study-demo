@@ -1,4 +1,4 @@
-package com.liren.spring.cache;
+package com.liren.commons;
 
 /**
  * Hello world!

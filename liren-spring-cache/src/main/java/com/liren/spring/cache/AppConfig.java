@@ -19,7 +19,7 @@ import java.io.IOException;
  * <p>Version: 1.0
  */
 @Configuration
-@ComponentScan(basePackages = "com.sishuok.spring.service")
+@ComponentScan(basePackages = "com.liren.spring.cache")
 @EnableCaching(proxyTargetClass = true)
 public class AppConfig implements CachingConfigurer {
     @Bean
@@ -27,9 +27,7 @@ public class AppConfig implements CachingConfigurer {
     public CacheManager cacheManager() {
 
         try {
-            net.sf.ehcache.CacheManager ehcacheCacheManager
-                    = new net.sf.ehcache.CacheManager(new ClassPathResource("ehcache.xml").getInputStream());
-
+            net.sf.ehcache.CacheManager ehcacheCacheManager = new net.sf.ehcache.CacheManager(new ClassPathResource("ehcache.xml").getInputStream());
             EhCacheCacheManager cacheCacheManager = new EhCacheCacheManager(ehcacheCacheManager);
             return cacheCacheManager;
         } catch (IOException e) {
