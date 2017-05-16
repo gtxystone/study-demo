@@ -102,6 +102,9 @@ public class OrderingDemo {
 	        System.out.println(" add null list:"+list);
 	        System.out.println("nullsFirst list :"+ naturalOrdering.nullsFirst().sortedCopy(list));
 	        System.out.println("nullsLast list :"+ naturalOrdering.nullsLast().sortedCopy(list));
+	        
+	        
+	       
 
 	}
 

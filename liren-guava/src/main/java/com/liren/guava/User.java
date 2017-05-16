@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 
 public class User implements Comparable<User>{  
+	
     private Integer id;  
     private String name;  
     private String address;  
