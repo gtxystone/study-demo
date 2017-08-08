@@ -10,6 +10,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPipeline;
 import redis.clients.jedis.ShardedJedisPool;
 import redis.clients.jedis.SortingParams;
 
@@ -202,6 +203,8 @@ public class RedisClient {
 		 * 一些其他方法：1、修改键名：jedis.rename("key6", "key0");
 		 * 2、将当前db的key移动到给定的db当中：jedis.move("foo", 1)
 		 */
+		 
+		
 	}
 
 	private void StringOperate() {
@@ -440,6 +443,11 @@ public class RedisClient {
 		System.out.println("获取hashs中所有的key：" + shardedJedis.hkeys("hashs"));
 		System.out.println("获取hashs中所有的value：" + shardedJedis.hvals("hashs"));
 		System.out.println();
+	}
+	
+	private void pipelineOperate(){
+		ShardedJedisPipeline pipelined = shardedJedis.pipelined();
+		
 	}
 
 }

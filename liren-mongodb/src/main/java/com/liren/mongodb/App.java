@@ -1,4 +1,4 @@
-package org.liren.utils;
+package com.liren.mongodb;
 
 /**
  * Hello world!
