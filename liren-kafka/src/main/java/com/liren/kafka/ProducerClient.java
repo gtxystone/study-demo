@@ -14,8 +14,8 @@ public class ProducerClient {
 
 	public static void main(String[] args) {
 		Properties props = new Properties();
-		props.put("bootstrap.servers", "192.168.153.139:9092");
-//		props.put("bootstrap.servers", "192.168.153.136:9092,192.168.153.137:9092,192.168.153.138:9092");
+//		props.put("bootstrap.servers", "192.168.153.139:9092");
+		props.put("bootstrap.servers", "192.168.153.181:9092,192.168.153.182:9092,192.168.153.183:9092");
 		props.put("acks", "all"); // ack方式，all，会等所有的commit最慢的方式
 		props.put("retries", 0); // 失败是否重试，设置会有可能产生重复数据
 		props.put("batch.size", 16384); // 对于每个partition的batch buffer大小
@@ -24,7 +24,7 @@ public class ProducerClient {
 		props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-		Producer<String, String> producer = new KafkaProducer<>(props);
+		Producer<String, String> producer = new KafkaProducer<String, String>(props);
 		
 		
 		for (int i = 0; i < 100; i++)

@@ -21,12 +21,21 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.wandoulabs.jodis/jodis -->
+		<!-- 
 		<dependency>
 			<groupId>com.wandoulabs.jodis</groupId>
 			<artifactId>jodis</artifactId>
 			<version>0.2.2</version>
 		</dependency>
+		-->
+
+		<!-- https://mvnrepository.com/artifact/io.codis.jodis/jodis -->
+		<dependency>
+			<groupId>io.codis.jodis</groupId>
+			<artifactId>jodis</artifactId>
+			<version>0.4.1</version>
+		</dependency>
+
 
 	</dependencies>
 </project>
