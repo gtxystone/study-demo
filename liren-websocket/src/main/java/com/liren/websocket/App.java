@@ -1,4 +1,4 @@
-package com.liren.mongodb;
+package com.liren.websocket;
 
 /**
  * Hello world!

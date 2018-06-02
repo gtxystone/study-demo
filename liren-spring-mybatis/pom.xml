@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.liren</groupId>
-	<artifactId>liren-mongodb</artifactId>
+	<artifactId>liren-spring-mybatis</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>liren-mongodb</name>
+	<name>liren-spring-mybatis</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -23,11 +23,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
 		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongo-java-driver</artifactId>
-			<version>3.6.3</version>
+			<groupId>com.ifrabbit</groupId>
+			<artifactId>spring-data-mybatis</artifactId>
+			<version>1.0.17.RELEASE</version>
 		</dependency>
 
 	</dependencies>
