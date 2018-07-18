@@ -1,8 +1,7 @@
 package com.liren.codis;
 
-import com.wandoulabs.jodis.JedisResourcePool;
-import com.wandoulabs.jodis.RoundRobinJedisPool;
-
+import io.codis.jodis.JedisResourcePool;
+import io.codis.jodis.RoundRobinJedisPool;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -31,14 +30,23 @@ public class CodisClient {
 		config.setTestWhileIdle(testWhileIdle);
 
 		jedisResourcePool = RoundRobinJedisPool.create()
-				.curatorClient("192.168.153.136:2181,192.168.153.137:2181,192.168.153.138:2181", zkSessionTimeoutMs)
-				.zkProxyDir("/jodis/codis-demo").poolConfig(config).database(database).password(password)
+//				.curatorClient("192.168.153.136:2181,192.168.153.137:2181,192.168.153.138:2181", zkSessionTimeoutMs)
+				.curatorClient("192.168.153.171:2181,192.168.153.172:2181,192.168.153.173:2181", zkSessionTimeoutMs)
+				.zkProxyDir("/jodis/liren").poolConfig(config).database(database).password(password)
 				.timeoutMs(timeoutMs).build();
 		
 		Jedis jedis = jedisResourcePool.getResource();
-		//jedis.set("test", "test");
-		String string = jedis.get("test");
-		System.out.println(string);
+		
+//		jedis.set("test3", "test3");
+		for(int i=0; i < 100000; i ++){
+			jedis.set("test" + i, "test" + i);
+//			jedis.del("test" + i);
+//			String string = jedis.get("test" + i);
+//			System.out.println(string);
+//			Jedis jedis = jedisResourcePool.getResource();
+		}
+//		String string = jedis.get("test");
+//		System.out.println(string);
 		
 	}
 

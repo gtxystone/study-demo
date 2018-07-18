@@ -21,6 +21,7 @@ public class JoinerDemo {
 		stringList.add("b");
 		stringList.add("c");
 		stringList.add(null);
+		stringList.add(null);
 	}
 
 	// 默认情况，遇到null，抛exception
@@ -33,8 +34,16 @@ public class JoinerDemo {
 	@Test
 	public void skipNull() {
 		// 忽略null
-		String str = Joiner.on("|").skipNulls().join(stringList);
-		System.out.println(str);
+//		String str = Joiner.on("|").skipNulls().join(stringList);
+//		System.out.println(str);
+		
+//		char c = '#';
+//		String strDefault = Joiner.on(c).skipNulls().join(stringList);
+//		System.out.println(strDefault);
+		
+		StringBuilder appendable = new StringBuilder();
+		Joiner.on("!").skipNulls().appendTo(appendable , stringList);
+		System.out.println(appendable.toString());
 	}
 
 	@Test

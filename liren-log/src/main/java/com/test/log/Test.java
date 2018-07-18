@@ -11,5 +11,11 @@ public class Test {
 	public static void main(String[] args) {
 		logger.debug("-------------------------");
 	}
+	
+	public void test() {
+//		logger.debug("-------------test------------");
+		logger.info("-------------test------------");
+		
+	}
 
 }

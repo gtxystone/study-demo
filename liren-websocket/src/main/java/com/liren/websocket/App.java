@@ -1,4 +1,4 @@
-package org.liren.utils;
+package com.liren.websocket;
 
 /**
  * Hello world!

@@ -39,7 +39,8 @@ public class SearchSolr {
 
 	@SuppressWarnings("deprecation")
 	public static SolrClient getSolrClient() {
-		return new HttpSolrClient(solrServerUrl + "/" + solrCroeHome);
+//		return new HttpSolrClient(solrServerUrl + "/" + solrCroeHome);
+		return null;
 	}
 
 }

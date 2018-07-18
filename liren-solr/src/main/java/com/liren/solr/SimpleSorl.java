@@ -30,13 +30,13 @@ public class SimpleSorl {
 
     private SolrClient createNewSolrClient() {
         try {
-            System.out.println("server address:" + solrUrl);
-            HttpSolrClient client = new HttpSolrClient(solrUrl);
-            CloudSolrClient build = new CloudSolrClient.Builder().withZkHost("").build();
-            client.setConnectionTimeout(30000);
-            client.setDefaultMaxConnectionsPerHost(100);
-            client.setMaxTotalConnections(100);
-            client.setSoTimeout(30000);
+//            System.out.println("server address:" + solrUrl);
+//            HttpSolrClient client = new HttpSolrClient(solrUrl);
+//            CloudSolrClient build = new CloudSolrClient.Builder().withZkHost("").build();
+//            client.setConnectionTimeout(30000);
+//            client.setDefaultMaxConnectionsPerHost(100);
+//            client.setMaxTotalConnections(100);
+//            client.setSoTimeout(30000);
             return client;
         } catch (Exception ex) {
             throw new RuntimeException(ex);
@@ -44,10 +44,10 @@ public class SimpleSorl {
     }
 
     private SolrClient createCouldSolrClient() {
-        CloudSolrClient client = new CloudSolrClient(zkUrl);
-        client.setZkClientTimeout(30000);
-        client.setZkConnectTimeout(50000);
-        client.setDefaultCollection(collectionName);
+//        CloudSolrClient client = new CloudSolrClient(zkUrl);
+//        client.setZkClientTimeout(30000);
+//        client.setZkConnectTimeout(50000);
+//        client.setDefaultCollection(collectionName);
         return client;
     }
 
@@ -78,7 +78,7 @@ public class SimpleSorl {
         Collection<SolrInputDocument> docs = new ArrayList<SolrInputDocument>();
         for (int i = 1; i <= num; i++) {
             SolrInputDocument doc1 = new SolrInputDocument();
-            doc1.addField("id", UUID.randomUUID().toString(), 1.0f);
+//            doc1.addField("id", UUID.randomUUID().toString(), 1.0f);
             doc1.addField("name", "bean");
             doc1.addField("equIP_s", "192.168.2.104");
             doc1.addField("level_s", "4");

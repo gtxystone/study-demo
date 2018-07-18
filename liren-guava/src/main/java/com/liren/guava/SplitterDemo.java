@@ -13,8 +13,8 @@ public class SplitterDemo {
      */  
     @Test  
     public void common(){  
-        String testString="Monday,Tuesday,Thursday,Friday,,";  
-        Iterable<String> parts=Splitter.on(",").split(testString);  
+        String testString="Monday, Tuesday,,Thursday,Friday,,";  
+        Iterable<String> parts=Splitter.on(",").trimResults().omitEmptyStrings().split(testString);  
         for(String s:parts)  
             System.out.println(s);  
     }  
@@ -43,6 +43,15 @@ public class SplitterDemo {
         Map<String,String> testMap=mapSplitter.split(testString);  
         for(String key:testMap.keySet())  
             System.out.println(testMap.get(key));  
+  
+    }  
+    
+    @Test  
+    public void testTest(){  
+       String src = ",2,6,";
+       String des = ",6,";
+       int indexOf = src.indexOf(des);
+       System.out.println(indexOf);
   
     }  
 }  
