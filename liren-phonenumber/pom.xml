@@ -30,5 +30,26 @@
 			<version>8.9.10</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.googlecode.libphonenumber/geocoder -->
+		<dependency>
+			<groupId>com.googlecode.libphonenumber</groupId>
+			<artifactId>geocoder</artifactId>
+			<version>2.99</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.googlecode.libphonenumber/carrier -->
+		<dependency>
+			<groupId>com.googlecode.libphonenumber</groupId>
+			<artifactId>carrier</artifactId>
+			<version>1.89</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.googlecode.libphonenumber/demo -->
+		<dependency>
+			<groupId>com.googlecode.libphonenumber</groupId>
+			<artifactId>demo</artifactId>
+			<version>8.9.10</version>
+		</dependency>
+
 	</dependencies>
 </project>
